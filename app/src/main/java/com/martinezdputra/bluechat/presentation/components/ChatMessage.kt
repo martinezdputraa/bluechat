@@ -2,11 +2,15 @@ package com.martinezdputra.bluechat.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -24,7 +28,7 @@ fun ChatMessage(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .clip(
                 RoundedCornerShape(
                     topStart = if (message.isFromLocalUser) 15.dp else 0.dp,
@@ -55,12 +59,46 @@ fun ChatMessage(
 @Composable
 fun ChatMessagePreview() {
     BluechatTheme {
-        ChatMessage(
-            message = BluetoothMessage(
-                message = "Hello World!",
-                senderName = "Martin",
-                isFromLocalUser = false,
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+        ) {
+            ChatMessage(
+                message = BluetoothMessage(
+                    message = "Hello Friend!",
+                    senderName = "Friend",
+                    isFromLocalUser = true,
+                ),
+                modifier = Modifier.align(Alignment.End)
             )
-        )
+            Spacer(modifier = Modifier.height(16.dp))
+            ChatMessage(
+                message = BluetoothMessage(
+                    message = "Hi Friend!",
+                    senderName = "Me",
+                    isFromLocalUser = false,
+                ),
+                modifier = Modifier.align(Alignment.Start)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            ChatMessage(
+                message = BluetoothMessage(
+                    message = "Have a great day!",
+                    senderName = "Me",
+                    isFromLocalUser = false,
+                ),
+                modifier = Modifier.align(Alignment.Start)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            ChatMessage(
+                message = BluetoothMessage(
+                    message = "Thank you!",
+                    senderName = "Friend",
+                    isFromLocalUser = true,
+                ),
+                modifier = Modifier.align(Alignment.End)
+            )
+        }
     }
 }
