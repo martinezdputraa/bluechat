@@ -1,5 +1,6 @@
 package com.martinezdputra.bluechat.presentation
 
+import com.martinezdputra.bluechat.data.chat.BluetoothMessage
 import com.martinezdputra.bluechat.domain.chat.BluetoothDeviceDomain
 
 data class BluetoothUiState(
@@ -8,4 +9,5 @@ data class BluetoothUiState(
     val isConnected: Boolean = false,
     val isConnecting: Boolean = false,
     val errorMessage: String? = null,
+    val messages: List<BluetoothMessage> = emptyList(),
 )
